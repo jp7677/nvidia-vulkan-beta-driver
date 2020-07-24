@@ -1,13 +1,35 @@
 #!/bin/sh
+set -e
+
 mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 export VERSION=${VERSION:-450.56.02}
 
+[[ -f NVIDIA-Linux-x86_64-${VERSION}.run ]] || wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
+
 pushd nvidia-driver
-wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
+cp -v ../NVIDIA-Linux-x86_64-${VERSION}.run .
 sh nvidia-generate-tarballs.sh
 sed -i "s/Version:.*/Version:$VERSION/" nvidia-driver.spec
 rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" -bb nvidia-driver.spec --clean --target i386
 rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" -bb nvidia-driver.spec --clean
-git checkout -- nvidia-driver.spec
-git clean -d -f
 popd
+
+pushd nvidia-kmod-common
+sed -i "s/Version:.*/Version:$VERSION/" nvidia-kmod-common.spec
+rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" -bb nvidia-kmod-common.spec --clean
+popd
+
+pushd nvidia-kmod
+sed -i "s/Version:.*/Version:$VERSION/" nvidia-kmod.spec
+cp -v ../nvidia-driver/nvidia-kmod-$VERSION-x86_64.tar.xz .
+rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" --define "_specdir $PWD" -bb nvidia-kmod.spec --clean
+popd
+
+pushd dkms-nvidia
+sed -i "s/Version:.*/Version:$VERSION/" dkms-nvidia.spec
+cp -v ../nvidia-driver/nvidia-kmod-$VERSION-x86_64.tar.xz .
+rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" -bb dkms-nvidia.spec --clean
+popd
+
+git submodule foreach --recursive git clean -d -f
+git submodule foreach --recursive git reset --hard
