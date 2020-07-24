@@ -1,0 +1,16 @@
+[submodule "nvidia-driver"]
+	path = nvidia-driver
+	url = git@github.com:negativo17/nvidia-driver.git
+	branch = fedora-32
+[submodule "dkms-nvidia"]
+	path = dkms-nvidia
+	url = git@github.com:negativo17/dkms-nvidia.git
+	branch = fedora-32
+[submodule "nvidia-kmod"]
+	path = nvidia-kmod
+	url = git@github.com:negativo17/nvidia-kmod.git
+	branch = fedora-32
+[submodule "nvidia-kmod-common"]
+	path = nvidia-kmod-common
+	url = git@github.com:negativo17/nvidia-kmod-common.git
+	branch = fedora-32
