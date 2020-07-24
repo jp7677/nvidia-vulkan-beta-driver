@@ -1,9 +1,12 @@
 #!/bin/sh
 set -e
 
-mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
-export VERSION=${VERSION:-450.56.02}
+if [ -z "$VERSION" ]; then
+    echo "Please specify VERSION to use this script."
+    exit 1
+fi
 
+mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 [[ -f NVIDIA-Linux-x86_64-${VERSION}.run ]] || wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
 
 pushd nvidia-driver
