@@ -1,4 +1,6 @@
-# NVIDIA Vulkan Beta Driver
+# [NVIDIA Vulkan Beta Driver](https://github.com/jp7677/nvidia-vulkan-beta-driver)
+
+This is just a script to build packages of the [NVIDIA Vulkan Beta Driver](https://developer.nvidia.com/vulkan-driver) for Fedora 32. This script just wraps the excellent NVIDIA package scripts from [negativo17](https://negativo17.org/).
 
 Building rpm's with:
 
