@@ -22,5 +22,4 @@ rpmbuild --define "_topdir $PWD/rpmbuild" --define "_sourcedir $PWD/nvidia-kmod-
 rpmbuild --define "_topdir $PWD/rpmbuild" --define "_sourcedir $PWD/nvidia-kmod" --define "_specdir $PWD/nvidia-kmod" --clean -bb nvidia-kmod/nvidia-kmod.spec
 rpmbuild --define "_topdir $PWD/rpmbuild" --define "_sourcedir $PWD/dkms-nvidia" --define "_specdir $PWD/dkms-nvidia" --clean -bb dkms-nvidia/dkms-nvidia.spec
 
-git submodule foreach 'git checkout -- $name.spec'
-git submodule foreach git clean -d -f
+git submodule foreach 'git checkout -- $name.spec && rm -f nvidia-{driver,kmod}-$VERSION-{x86_64,i386}.tar.xz'
