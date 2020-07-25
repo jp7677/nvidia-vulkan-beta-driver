@@ -8,11 +8,12 @@ fi
 
 mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 [[ -f NVIDIA-Linux-x86_64-${VERSION}.run ]] || wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
+sh nvidia-driver/nvidia-generate-tarballs.sh
 
 pushd nvidia-driver
-cp -v ../NVIDIA-Linux-x86_64-${VERSION}.run .
-sh nvidia-generate-tarballs.sh
 sed -i "s/Version:.*/Version:$VERSION/" nvidia-driver.spec
+cp -v ../nvidia-driver-$VERSION-x86_64.tar.xz .
+cp -v ../nvidia-driver-$VERSION-i386.tar.xz .
 rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" -bb nvidia-driver.spec --clean --target i386
 rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" -bb nvidia-driver.spec --clean
 popd
@@ -24,13 +25,13 @@ popd
 
 pushd nvidia-kmod
 sed -i "s/Version:.*/Version:$VERSION/" nvidia-kmod.spec
-cp -v ../nvidia-driver/nvidia-kmod-$VERSION-x86_64.tar.xz .
+cp -v ../nvidia-kmod-$VERSION-x86_64.tar.xz .
 rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" --define "_specdir $PWD" -bb nvidia-kmod.spec --clean
 popd
 
 pushd dkms-nvidia
 sed -i "s/Version:.*/Version:$VERSION/" dkms-nvidia.spec
-cp -v ../nvidia-driver/nvidia-kmod-$VERSION-x86_64.tar.xz .
+cp -v ../nvidia-kmod-$VERSION-x86_64.tar.xz .
 rpmbuild --define "_topdir $PWD/../rpmbuild" --define "_sourcedir $PWD" -bb dkms-nvidia.spec --clean
 popd
 
