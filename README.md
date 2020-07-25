@@ -1,12 +1,12 @@
 # NVIDIA Vulkan Beta Driver
 
-Build rpm's with
+Building rpm's with:
 
 ```bash
 VERSION=450.56.02 ./make-rpms.sh
 ```
 
-Install with
+Installing by running as root:
 
 ```bash
 VERSION=450.56.02;dnf install \
@@ -20,3 +20,9 @@ VERSION=450.56.02;dnf install \
 ```
 
 Obviously you would need to replace the version number with your prefered version.
+
+Enabling NVIDIA modeset by running as root:
+
+```bash
+grubby --args="nvidia-drm.modeset=1" --update-kernel=ALL
+```
