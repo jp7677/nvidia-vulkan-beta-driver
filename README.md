@@ -25,8 +25,11 @@ VERSION=450.56.02;dnf install \
 
 Obviously you would need to replace the version number with your prefered version.
 
-Enabling NVIDIA modeset by running as root:
+Optionally enable NVIDIA modeset by running as root:
 
 ```bash
 grubby --args="nvidia-drm.modeset=1" --update-kernel=ALL
 ```
+Or alternatively follow https://negativo17.org/wayland-modesetting-on-nvidia/
+
+Thanks a lot [scaronni](https://github.com/scaronni) for all the hard work.
