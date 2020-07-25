@@ -10,9 +10,9 @@ mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SRPMS}
 [[ -f NVIDIA-Linux-x86_64-${VERSION}.run ]] || wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
 [[ -f nvidia-driver-${VERSION}-x86_64.tar.xz ]] || sh nvidia-driver/nvidia-generate-tarballs.sh
 
-cp -v nvidia-driver-$VERSION-{x86_64,i386}.tar.xz nvidia-driver/
-cp -v nvidia-kmod-$VERSION-x86_64.tar.xz nvidia-kmod/
-cp -v nvidia-kmod-$VERSION-x86_64.tar.xz dkms-nvidia/
+ln -s $PWD/nvidia-driver-$VERSION-{x86_64,i386}.tar.xz nvidia-driver/
+ln -s $PWD/nvidia-kmod-$VERSION-x86_64.tar.xz nvidia-kmod/
+ln -s $PWD/nvidia-kmod-$VERSION-x86_64.tar.xz dkms-nvidia/
 
 sed -i "s/Version:.*/Version:$VERSION/" nvidia-driver/nvidia-driver.spec
 sed -i "s/Version:.*/Version:$VERSION/" nvidia-kmod-common/nvidia-kmod-common.spec
