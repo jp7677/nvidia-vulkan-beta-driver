@@ -5,6 +5,8 @@ This is just a script to build packages of the [NVIDIA Vulkan Beta Driver](https
 Building rpm's with:
 
 ```bash
+git clone --recurse-submodules https://github.com/jp7677/nvidia-vulkan-beta-driver
+cd nvidia-vulkan-beta-driver
 VERSION=450.56.02 ./make-rpms.sh
 ```
 
