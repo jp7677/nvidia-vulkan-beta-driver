@@ -4,7 +4,7 @@ This is just a script to build packages of the [NVIDIA Vulkan Beta Driver](https
 
 ## Build and install
 
-Building rpm's with for e.g. 450.56.02 goes like:
+You'll need to have `rpmbuild` and friends installed on your Fedora 32 machine. Building rpm's with for e.g. 450.56.02 goes like:
 
 ```bash
 git clone --recurse-submodules https://github.com/jp7677/nvidia-vulkan-beta-driver
