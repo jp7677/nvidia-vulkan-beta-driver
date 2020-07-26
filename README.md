@@ -2,7 +2,9 @@
 
 This is just a script to build packages of the [NVIDIA Vulkan Beta Driver](https://developer.nvidia.com/vulkan-driver) for Fedora 32. This script just wraps the excellent NVIDIA package scripts from [negativo17](https://negativo17.org/).
 
-Building rpm's with:
+## Build and install
+
+Building rpm's with for e.g. 450.56.02 goes like:
 
 ```bash
 git clone --recurse-submodules https://github.com/jp7677/nvidia-vulkan-beta-driver
@@ -25,6 +27,10 @@ VERSION=450.56.02;dnf install \
 
 Obviously you would need to replace the version number with your prefered version.
 
+Note that this builds and installs only the driver, there is e.g. no control panel or or other extras.
+
+## Extras
+
 Optionally enable NVIDIA modeset by running as root:
 
 ```bash
@@ -32,4 +38,6 @@ grubby --args="nvidia-drm.modeset=1" --update-kernel=ALL
 ```
 Or alternatively follow https://negativo17.org/wayland-modesetting-on-nvidia/
 
-Thanks a lot [scaronni](https://github.com/scaronni) for all the hard work.
+## Credits
+
+Thanks a lot [scaronni](https://github.com/scaronni) for creating and maintaining the Negativo17 packages!
