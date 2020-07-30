@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ -z "$VERSION" ]; then
+if [ -z ${VERSION} ]; then
     echo "Please specify VERSION to use this script."
     exit 1
 fi
@@ -20,12 +20,12 @@ mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SRPMS}
 
 build_rpm() {
     rpmbuild \
-        --define "_topdir $PWD/rpmbuild" \
-        --define "_sourcedir $PWD/$1" \
-        --define "_specdir $PWD/$1" \
-        --target $2 \
+        --define "_topdir ${PWD}/rpmbuild" \
+        --define "_sourcedir ${PWD}/${1}" \
+        --define "_specdir ${PWD}/${1}" \
+        --target ${2} \
         --clean \
-        -bb $1/$1.spec    
+        -bb ${1}/${1}.spec    
 }
 
 build_rpm nvidia-driver i386
