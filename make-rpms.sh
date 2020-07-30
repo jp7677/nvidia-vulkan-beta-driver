@@ -21,15 +21,15 @@ rpmbuild \
     --define "_topdir $PWD/rpmbuild" \
     --define "_sourcedir $PWD/nvidia-driver" \
     --define "_specdir $PWD/nvidia-driver" \
-    --clean \
     --target i386 \
+    --clean \
     -bb nvidia-driver/nvidia-driver.spec
 rpmbuild \
     --define "_topdir $PWD/rpmbuild" \
     --define "_sourcedir $PWD/nvidia-driver" \
     --define "_specdir $PWD/nvidia-driver" \
-    --clean \
     --target x86_64 \
+    --clean \
     -bb nvidia-driver/nvidia-driver.spec
 rpmbuild \
     --define "_topdir $PWD/rpmbuild" \
