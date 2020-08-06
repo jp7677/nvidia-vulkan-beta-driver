@@ -27,7 +27,7 @@ VERSION=450.56.02;dnf install \
 
 Obviously you would need to replace the version number with your prefered version.
 
-Note that this builds and installs only the driver, there is no control panel or or other extras.
+Note that this builds and installs the driver only, there is no control panel or other extras.
 
 ## Extras
 
