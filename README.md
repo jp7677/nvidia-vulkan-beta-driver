@@ -21,8 +21,8 @@ VERSION=455.22.04;dnf install \
   rpmbuild/RPMS/x86_64/nvidia-driver-$VERSION-1.fc32.x86_64.rpm \
   rpmbuild/RPMS/x86_64/nvidia-driver-libs-$VERSION-1.fc32.x86_64.rpm \
   rpmbuild/RPMS/x86_64/nvidia-driver-cuda-libs-$VERSION-1.fc32.x86_64.rpm \
-  rpmbuild/RPMS/i386/nvidia-driver-libs-$VERSION-1.fc32.i686.rpm \
-  rpmbuild/RPMS/i386/nvidia-driver-cuda-libs-$VERSION-1.fc32.i686.rpm
+  rpmbuild/RPMS/i686/nvidia-driver-libs-$VERSION-1.fc32.i686.rpm \
+  rpmbuild/RPMS/i686/nvidia-driver-cuda-libs-$VERSION-1.fc32.i686.rpm
 ```
 
 Obviously you would need to replace the version number with your prefered version.
