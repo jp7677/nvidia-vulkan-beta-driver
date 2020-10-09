@@ -15,7 +15,7 @@ main() {
 
     git submodule foreach '\
         sed -i "s/Version:.*/Version:$VERSION/" $name.spec && \
-        ln -s ../nvidia-driver-$VERSION-{x86_64,i686}.tar.xz ../nvidia-kmod-$VERSION-x86_64.tar.xz .'
+        ln -s ../nvidia-driver-$VERSION-{x86_64,i386}.tar.xz ../nvidia-kmod-$VERSION-x86_64.tar.xz .'
 
     mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SRPMS}
     build_rpm nvidia-driver i686
@@ -26,7 +26,7 @@ main() {
 
     git submodule foreach '\
         git checkout -- $name.spec && \
-        rm nvidia-driver-$VERSION-{x86_64,i686}.tar.xz nvidia-kmod-$VERSION-x86_64.tar.xz'
+        rm nvidia-driver-$VERSION-{x86_64,i386}.tar.xz nvidia-kmod-$VERSION-x86_64.tar.xz'
 }
 
 build_rpm() {
