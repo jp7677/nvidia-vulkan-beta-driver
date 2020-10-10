@@ -36,7 +36,8 @@ Optionally enable NVIDIA modeset by running as root:
 ```bash
 grubby --args="nvidia-drm.modeset=1" --update-kernel=ALL
 ```
-Or alternatively follow https://negativo17.org/wayland-modesetting-on-nvidia/
+
+Or alternatively follow [https://negativo17.org/wayland-modesetting-on-nvidia/](https://negativo17.org/wayland-modesetting-on-nvidia/)
 
 ## Credits
 
