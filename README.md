@@ -9,13 +9,13 @@ You'll need to have `rpmbuild` and friends installed on your Fedora 32 machine. 
 ```bash
 git clone --recurse-submodules https://github.com/jp7677/nvidia-vulkan-beta-driver
 cd nvidia-vulkan-beta-driver
-VERSION=455.22.04 ./make-rpms.sh
+VERSION=455.26.01 ./make-rpms.sh
 ```
 
 Installing by running as root:
 
 ```bash
-VERSION=455.22.04;dnf install \
+VERSION=455.26.01;dnf install \
   rpmbuild/RPMS/noarch/nvidia-kmod-common-$VERSION-1.fc32.noarch.rpm \
   rpmbuild/RPMS/x86_64/dkms-nvidia-$VERSION-1.fc32.x86_64.rpm \
   rpmbuild/RPMS/x86_64/nvidia-driver-$VERSION-1.fc32.x86_64.rpm \
@@ -28,6 +28,32 @@ VERSION=455.22.04;dnf install \
 Obviously you would need to replace the version number with your prefered version.
 
 Note that this builds and installs the driver only, there is no control panel or other extras.
+
+## Remove or downgrading
+
+Use the following to remove the driver from your system:
+
+```bash
+VERSION=455.26.01;dnf remove --noautoremove \
+  nvidia-kmod-common-$VERSION \
+  dkms-nvidia-$VERSION \
+  nvidia-driver-$VERSION \
+  nvidia-driver-libs-$VERSION \
+  nvidia-driver-cuda-libs-$VERSION
+```
+
+Alternatively use this command to downgrade to an older version:
+
+```bash
+VERSION=450.66;dnf install \
+  nvidia-kmod-common-$VERSION \
+  dkms-nvidia-$VERSION \
+  nvidia-driver-$VERSION \
+  nvidia-driver-libs-$VERSION \
+  nvidia-driver-cuda-libs-$VERSION \
+  nvidia-driver-libs-*:$VERSION*.i686 \
+  nvidia-driver-cuda-libs-*:$VERSION*.i686
+```
 
 ## Extras
 
