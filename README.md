@@ -49,8 +49,8 @@ VERSION=450.66;dnf install \
   nvidia-kmod-common-$VERSION \
   dkms-nvidia-$VERSION \
   nvidia-driver-$VERSION \
-  nvidia-driver-libs-$VERSION \
-  nvidia-driver-cuda-libs-$VERSION \
+  nvidia-driver-libs-*:$VERSION*.x86_64 \
+  nvidia-driver-cuda-libs-*:$VERSION*.x86_64 \
   nvidia-driver-libs-*:$VERSION*.i686 \
   nvidia-driver-cuda-libs-*:$VERSION*.i686
 ```
