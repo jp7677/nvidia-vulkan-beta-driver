@@ -1,3 +1,5 @@
 rpmbuild/**
+temp/**
+nvidia-driver-*
 *.run
 *.tar.xz
