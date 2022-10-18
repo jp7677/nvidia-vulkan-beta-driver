@@ -16,18 +16,18 @@ Installing by running as root:
 
 ```bash
 VERSION=515.49.19;dnf install \
-  rpmbuild/RPMS/noarch/nvidia-kmod-common-$VERSION-1.fc32.noarch.rpm \
-  rpmbuild/RPMS/x86_64/dkms-nvidia-$VERSION-1.fc32.x86_64.rpm \
-  rpmbuild/RPMS/x86_64/nvidia-driver-$VERSION-1.fc32.x86_64.rpm \
-  rpmbuild/RPMS/x86_64/nvidia-driver-libs-$VERSION-1.fc32.x86_64.rpm \
-  rpmbuild/RPMS/x86_64/nvidia-driver-cuda-libs-$VERSION-1.fc32.x86_64.rpm \
-  rpmbuild/RPMS/i686/nvidia-driver-libs-$VERSION-1.fc32.i686.rpm \
-  rpmbuild/RPMS/i686/nvidia-driver-cuda-libs-$VERSION-1.fc32.i686.rpm
+  rpmbuild/RPMS/noarch/nvidia-kmod-common-$VERSION-1.fc36.noarch.rpm \
+  rpmbuild/RPMS/x86_64/dkms-nvidia-$VERSION-1.fc36.x86_64.rpm \
+  rpmbuild/RPMS/x86_64/nvidia-driver-$VERSION-1.fc36.x86_64.rpm \
+  rpmbuild/RPMS/x86_64/nvidia-driver-libs-$VERSION-1.fc36.x86_64.rpm \
+  rpmbuild/RPMS/x86_64/nvidia-driver-cuda-libs-$VERSION-1.fc36.x86_64.rpm \
+  rpmbuild/RPMS/i686/nvidia-driver-libs-$VERSION-1.fc36.i686.rpm \
+  rpmbuild/RPMS/i686/nvidia-driver-cuda-libs-$VERSION-1.fc36.i686.rpm
 ```
 
 Obviously you would need to replace the version number with your prefered version.
 
-Note that this builds and installs the driver only, there is no control panel or other extras.
+Note that this builds and installs the driver only, there is no control panel or other extras. Please remove related packages like `nvidia-settings` and `nvidia-persistenced` before attempting to install above packages.
 
 ## Remove or downgrading
 
