@@ -1,5 +1,6 @@
 rpmbuild/**
 temp/**
 nvidia-driver-*
+nvidia-kmod-*
 *.run
 *.tar.xz
