@@ -11,24 +11,26 @@ main() {
         wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
     [[ -f NVIDIA-Linux-aarch64-${VERSION}.run ]] || \
         wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-aarch64-${VERSION}.run
+    [[ -f open-gpu-kernel-modules-${VERSION}.tar.gz ]] || \
+        wget -c https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${VERSION}.tar.gz -O open-gpu-kernel-modules-${VERSION}.tar.gz
 
     [[ -f nvidia-driver-${VERSION}-x86_64.tar.xz ]] || \
         sh nvidia-driver/nvidia-generate-tarballs.sh
 
     git submodule foreach '\
-        sed -i "s/Version:.*/Version:$VERSION/" $name.spec && \
-        ln -f -s ../nvidia-driver-$VERSION-{x86_64,i386}.tar.xz ../nvidia-kmod-$VERSION-{x86_64,aarch64}.tar.xz ../nvidia-kmod-common-$VERSION.tar.xz .'
+        sed -i "s/Version:.*/Version:${VERSION}/" $name.spec && \
+        ln -f -s ../nvidia-driver-${VERSION}-{x86_64,i386}.tar.xz ../nvidia-kmod-common-${VERSION}.tar.xz ../open-gpu-kernel-modules-${VERSION}.tar.gz .'
 
     mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SRPMS}
     build_rpm nvidia-driver i686
     build_rpm nvidia-driver x86_64
-    build_rpm nvidia-kmod-common x86_64
+    build_rpm nvidia-kmod-common noarch
     build_rpm nvidia-kmod x86_64
     build_rpm dkms-nvidia x86_64
 
     git submodule foreach '\
         git checkout -- $name.spec && \
-        rm nvidia-driver-$VERSION-{x86_64,i386}.tar.xz nvidia-kmod-$VERSION-x86_64.tar.xz nvidia-kmod-common-$VERSION.tar.xz'
+        rm nvidia-driver-${VERSION}-{x86_64,i386}.tar.xz nvidia-kmod-common-${VERSION}.tar.xz open-gpu-kernel-modules-${VERSION}.tar.gz'
 }
 
 build_rpm() {

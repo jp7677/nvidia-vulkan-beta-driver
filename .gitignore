@@ -4,3 +4,4 @@ nvidia-driver-*
 nvidia-kmod-*
 *.run
 *.tar.xz
+*.tar.gz
