@@ -9,13 +9,11 @@ main() {
 
     [[ -f NVIDIA-Linux-x86_64-${VERSION}.run ]] || \
         wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
-    [[ -f NVIDIA-Linux-aarch64-${VERSION}.run ]] || \
-        wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-aarch64-${VERSION}.run
     [[ -f open-gpu-kernel-modules-${VERSION}.tar.gz ]] || \
         wget -c https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${VERSION}.tar.gz -O open-gpu-kernel-modules-${VERSION}.tar.gz
 
     [[ -f nvidia-driver-${VERSION}-x86_64.tar.xz ]] || \
-        sh nvidia-driver/nvidia-generate-tarballs.sh
+        ARCHES=x86_64 sh nvidia-driver/nvidia-generate-tarballs.sh
 
     git submodule foreach '\
         sed -i "s/Version:.*/Version:${VERSION}/" $name.spec && \
