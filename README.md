@@ -6,18 +6,18 @@ Warning: this is meant for personal use, use at your own risk.
 
 ## Build and install
 
-You'll need to have `rpmbuild`, `kmodtool` and friends installed on your Fedora 43 machine. Building rpm's for e.g. driver version 580.94.06 goes like:
+You'll need to have `rpmbuild`, `kmodtool` and friends installed on your Fedora 43 machine. Building rpm's for e.g. driver version 595.44.14 goes like:
 
 ```bash
 git clone --recurse-submodules https://github.com/jp7677/nvidia-vulkan-beta-driver
 cd nvidia-vulkan-beta-driver
-VERSION=595.44.09 ./make-rpms.sh
+VERSION=595.44.14 ./make-rpms.sh
 ```
 
 Installing by running (dry-run):
 
 ```bash
-VERSION=595.44.09;dnf install --allowerasing --assumeno \
+VERSION=595.44.14;dnf install --allowerasing --assumeno \
   rpmbuild/RPMS/noarch/nvidia-kmod-common-$VERSION-*.fc44.noarch.rpm \
   rpmbuild/RPMS/noarch/dkms-nvidia-$VERSION-*.fc44.noarch.rpm \
   rpmbuild/RPMS/x86_64/nvidia-driver-$VERSION-*.fc44.x86_64.rpm \
@@ -41,7 +41,7 @@ Note that this builds and installs the driver only, there is no control panel or
 Use the following to remove the driver from your system (dry-run):
 
 ```bash
-VERSION=595.44.09;dnf remove --noautoremove --assumeno \
+VERSION=595.44.14;dnf remove --noautoremove --assumeno \
   nvidia-kmod-common-$VERSION \
   dkms-nvidia-$VERSION \
   nvidia-driver-$VERSION \
@@ -52,10 +52,10 @@ VERSION=595.44.09;dnf remove --noautoremove --assumeno \
   libnvidia-ml-$VERSION
 ```
 
-Alternatively use this command to downgrade to another version (dry-run):
+Alternatively use this command to downgrade or upgrade to another version (dry-run):
 
 ```bash
-VERSION=595.45.04;dnf install --assumeno \
+VERSION=610.57.04;dnf install --assumeno \
   nvidia-kmod-common-$VERSION \
   dkms-nvidia-$VERSION \
   nvidia-driver-$VERSION \

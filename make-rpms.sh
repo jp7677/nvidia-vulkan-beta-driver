@@ -8,7 +8,7 @@ main() {
     fi
 
     [[ -f NVIDIA-Linux-x86_64-${VERSION}.run ]] || \
-        wget -c https://developer.nvidia.com/vulkan-beta-${VERSION//./}-linux -O NVIDIA-Linux-x86_64-${VERSION}.run
+        wget -c https://developer.nvidia.com/downloads/assets/gameworks/downloads/secure/Vulkan_Beta_Drivers/NVIDIA-Linux-x86_64-${VERSION}.run -O NVIDIA-Linux-x86_64-${VERSION}.run
     [[ -f open-gpu-kernel-modules-${VERSION}.tar.gz ]] || \
         wget -c https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${VERSION}.tar.gz -O open-gpu-kernel-modules-${VERSION}.tar.gz
 
